@@ -1,4 +1,18 @@
-Psycopg2 required
+Links the database to the player entry screen.
 
-Debian: sudo apt install python3-psycopg2
-Pip: pip install psycopg2
+#### Tkinter required
+
+Debian:
+sudo apt-get install python3-tk
+
+MacOS:
+brew install python-tk
+
+#### psycopg2 required
+
+MacOS:
+brew install postgresql
+pip install psycopg2
+
+Pip:
+pip install psycopg2
