@@ -58,7 +58,7 @@ class firstScreen:
 
             # For equipment ID. Uncomment as needed
             # entry_right = tk.Entry(row_frame, bg="white", fg="black")
-            # entry_right.field_type = "string" # Tweak this type as needed
+            # entry_right.field_type = "integer" # Tweak this type as needed
             # entry_right.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5)
 
             # Bind entry submission to the "Enter" key and call self.submit() method
