@@ -51,12 +51,12 @@ class firstScreen:
             entry_left.field_type = "integer" # Player ID only accepts int values
             entry_left.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5)
 
-            # Store name next to ID entry field
+            # Display codename next to ID entry field
             name_label = tk.Label(row_frame, bg="white", fg="black")
             self.player_entries[entry_left] = name_label
             name_label.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5)
 
-            # For codename/equipment ID. Uncomment as needed
+            # For equipment ID. Uncomment as needed
             # entry_right = tk.Entry(row_frame, bg="white", fg="black")
             # entry_right.field_type = "string" # Tweak this type as needed
             # entry_right.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5)
@@ -69,17 +69,16 @@ class firstScreen:
         # Get entry value and type
         value = entry.get().strip()
         value_type = entry.field_type
-        # Validate entry by checking required type of field
-        if value_type == "integer":
-            try:
-                value = int(value)
-            except ValueError:
-                messagebox.showerror("Error", "Invalid submission: empty or noninteger")
-                return
-        else:
-            # Add to conditionals as necessary for other fields of different types
-            messagebox.showerror("Error", "This is not the ID field")
-            return # Break out of function
+        # Validate entry submission by checking required type of field (integer)
+        try:
+            # If ID field is empty, clear name field
+            if value == "":
+                self.player_entries[entry].config(text="")
+                return # Break out of function here, otherwise ValueError raised
+            value = int(value)
+        except ValueError:
+            messagebox.showerror("Error", "Invalid submission. Enter an integer ID")
+            return
 
         print("\nSubmitted", value)
 
@@ -91,7 +90,7 @@ class firstScreen:
 
         if value in existing_ids:
             # If ID exists, get codename
-            # Assumes uniqe IDs (set)
+            # Assumes unique IDs (set)
             try:
                 # Fetch codename corresponding to ID and then update name_label to display it
                 codename = existing_codenames[existing_ids.index(value)]
